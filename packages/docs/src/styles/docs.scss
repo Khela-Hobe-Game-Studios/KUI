@@ -1,0 +1,511 @@
+// ─── Base ────────────────────────────────────────────────────────────────────
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html { scroll-behavior: smooth; }
+
+.docs-main { min-height: 100vh; }
+
+// ─── TopBar ──────────────────────────────────────────────────────────────────
+
+.docs-topbar {
+  position: sticky;
+  top: 0;
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 32px;
+  height: 60px;
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1.5px solid var(--kui-border);
+  gap: 16px;
+
+  [data-kui-mode="dark"] & {
+    background: rgba(19, 20, 31, 0.88);
+  }
+
+  &__logo {
+    font-family: var(--kui-font-display);
+    font-weight: 900;
+    font-size: 20px;
+    text-decoration: none;
+    white-space: nowrap;
+    background: linear-gradient(135deg, var(--kui-primary) 0%, var(--kui-secondary) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  &__nav {
+    display: flex;
+    gap: 2px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  &__nav-link {
+    display: block;
+    font-size: 13px;
+    font-weight: 600;
+    padding: 6px 13px;
+    border-radius: var(--kui-radius-full);
+    text-decoration: none;
+    color: var(--kui-text-muted);
+    transition: color 0.15s, background 0.15s;
+
+    &:hover {
+      color: var(--kui-primary);
+      background: var(--kui-surface-2);
+    }
+  }
+
+  &__controls {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    white-space: nowrap;
+  }
+
+  &__theme-select {
+    font-size: 13px;
+    padding: 5px 10px;
+    border-radius: var(--kui-radius-sm);
+    border: 1.5px solid var(--kui-border);
+    background: var(--kui-surface);
+    color: var(--kui-text);
+    cursor: pointer;
+    font-family: var(--kui-font-sans);
+    font-weight: 500;
+    transition: border-color 0.15s;
+
+    &:focus {
+      outline: none;
+      border-color: var(--kui-primary);
+    }
+  }
+
+  &__mode-btn {
+    font-size: 17px;
+    background: var(--kui-surface);
+    border: 1.5px solid var(--kui-border);
+    border-radius: var(--kui-radius-sm);
+    padding: 5px 9px;
+    cursor: pointer;
+    line-height: 1;
+    transition: background 0.15s, transform 0.1s;
+
+    &:hover {
+      background: var(--kui-surface-2);
+      transform: scale(1.08);
+    }
+
+    &:active { transform: scale(0.95); }
+  }
+}
+
+// ─── Hero ─────────────────────────────────────────────────────────────────────
+
+.docs-hero {
+  padding: 96px 32px 72px;
+  text-align: center;
+  background: var(--kui-bg);
+  border-bottom: 2px solid var(--kui-border);
+  position: relative;
+  overflow: hidden;
+
+  // subtle radial glow
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 70% 60% at 50% 0%, color-mix(in srgb, var(--kui-primary) 8%, transparent) 0%, transparent 100%);
+    pointer-events: none;
+  }
+
+  &__eyebrow {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--kui-primary);
+    background: var(--kui-surface-2);
+    border: 1.5px solid var(--kui-border);
+    border-radius: var(--kui-radius-full);
+    padding: 6px 16px;
+    margin-bottom: 28px;
+  }
+
+  &__title {
+    font-family: var(--kui-font-display);
+    font-size: var(--kui-text-hero);
+    font-weight: 900;
+    margin: 0 0 16px;
+    background: linear-gradient(135deg, var(--kui-primary) 20%, var(--kui-secondary) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    line-height: 1.15;
+  }
+
+  &__tagline {
+    font-size: var(--kui-text-lg);
+    color: var(--kui-text-muted);
+    margin: 0 0 40px;
+  }
+
+  &__install {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    background: var(--kui-surface);
+    border: 2px solid var(--kui-border);
+    border-radius: var(--kui-radius-md);
+    box-shadow: var(--kui-shadow-md);
+    padding: 12px 20px;
+    font-family: 'SF Mono', 'Fira Code', monospace;
+    font-size: var(--kui-text-md);
+    color: var(--kui-text);
+    margin-bottom: 32px;
+    transition: box-shadow 0.2s;
+
+    &:hover { box-shadow: var(--kui-shadow-lg); }
+  }
+
+  &__install-copy {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    line-height: 1;
+    padding: 0;
+    color: var(--kui-text-muted);
+    transition: color 0.15s, transform 0.1s;
+
+    &:hover {
+      color: var(--kui-primary);
+      transform: scale(1.15);
+    }
+  }
+
+  &__snippet {
+    max-width: 560px;
+    margin: 0 auto 48px;
+    text-align: left;
+    border-radius: var(--kui-radius-lg);
+    overflow: hidden;
+    box-shadow: var(--kui-shadow-lg);
+  }
+
+  &__zones {
+    display: flex;
+    gap: 14px;
+    justify-content: center;
+    flex-wrap: wrap;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+  &__zone-link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    padding: 18px 22px;
+    border: 2px solid var(--kui-border);
+    border-radius: var(--kui-radius-lg);
+    box-shadow: var(--kui-shadow-sm);
+    text-decoration: none;
+    background: var(--kui-surface);
+    transition: transform 0.18s var(--kui-easing-bounce), box-shadow 0.18s;
+
+    &:hover {
+      transform: translateY(-5px) scale(1.04);
+      box-shadow: var(--kui-shadow-lg);
+    }
+
+    &:active { transform: translateY(-1px) scale(0.99); }
+  }
+
+  &__zone-emoji { font-size: 30px; }
+
+  &__zone-name {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--kui-text);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+}
+
+// ─── Zones ───────────────────────────────────────────────────────────────────
+
+// per-zone accent colours exposed as a custom property so booths can inherit
+.docs-zone--primitives { --zone-accent: #6b73ff; background: #f0f1ff; [data-kui-mode="dark"] & { background: #13141f; } }
+.docs-zone--display    { --zone-accent: #ff9a9e; background: #fff0f3; [data-kui-mode="dark"] & { background: #1a1020; } }
+.docs-zone--data       { --zone-accent: #38a169; background: #f0fff4; [data-kui-mode="dark"] & { background: #0d1a12; } }
+.docs-zone--feedback   { --zone-accent: #f6a623; background: #fffbf0; [data-kui-mode="dark"] & { background: #1a1800; } }
+.docs-zone--layout     { --zone-accent: #ff6b6b; background: #fff5f0; [data-kui-mode="dark"] & { background: #1a100d; } }
+.docs-zone--cpdb       { --zone-accent: #9f7aea; background: #f5f0ff; [data-kui-mode="dark"] & { background: #120e1a; } }
+.docs-zone--fun        { --zone-accent: #f6a623; background: #fff8f0; [data-kui-mode="dark"] & { background: #1a1200; } }
+
+.docs-zone {
+  padding: 72px 32px 80px;
+  border-top: 3px solid var(--zone-accent, var(--kui-border));
+
+  &__header {
+    text-align: center;
+    margin-bottom: 52px;
+  }
+
+  &__emoji {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 42px;
+    width: 84px;
+    height: 84px;
+    background: var(--kui-surface);
+    border: 2px solid var(--kui-border);
+    border-radius: 50%;
+    margin: 0 auto 20px;
+    box-shadow: var(--kui-shadow-md);
+  }
+
+  &__title {
+    font-family: var(--kui-font-display);
+    font-size: var(--kui-text-3xl);
+    font-weight: 900;
+    color: var(--kui-text);
+    margin: 0 0 10px;
+  }
+
+  &__subtitle {
+    font-size: var(--kui-text-md);
+    color: var(--kui-text-muted);
+    margin: 0;
+    max-width: 480px;
+    margin-inline: auto;
+    line-height: 1.6;
+  }
+
+  &__booths {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(460px, 1fr));
+    gap: 28px;
+    max-width: 1280px;
+    margin: 0 auto;
+
+    @media (max-width: 560px) {
+      grid-template-columns: 1fr;
+    }
+  }
+}
+
+// ─── Booth ───────────────────────────────────────────────────────────────────
+
+.docs-booth {
+  background: var(--kui-surface);
+  border: 2px solid var(--kui-border);
+  border-top: 3px solid var(--zone-accent, var(--kui-primary));
+  border-radius: var(--kui-radius-lg);
+  box-shadow: var(--kui-shadow-md);
+  overflow: hidden;
+  transition: transform 0.2s var(--kui-easing-bounce), box-shadow 0.2s;
+
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--kui-shadow-lg);
+  }
+
+  &__header {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 18px 18px 14px;
+  }
+
+  &__emoji {
+    font-size: 26px;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  &__info { flex: 1; min-width: 0; }
+
+  &__title {
+    font-family: var(--kui-font-display);
+    font-size: var(--kui-text-md);
+    font-weight: 700;
+    color: var(--kui-text);
+    margin: 0 0 3px;
+  }
+
+  &__desc {
+    font-size: var(--kui-text-sm);
+    color: var(--kui-text-muted);
+    margin: 0;
+    line-height: 1.5;
+  }
+
+  &__props-btn {
+    flex-shrink: 0;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 4px 10px;
+    border: 1.5px solid var(--kui-border);
+    border-radius: var(--kui-radius-full);
+    background: transparent;
+    color: var(--kui-primary);
+    cursor: pointer;
+    white-space: nowrap;
+    font-family: var(--kui-font-sans);
+    letter-spacing: 0.04em;
+    transition: background 0.15s, color 0.15s;
+
+    &:hover {
+      background: var(--kui-surface-2);
+      color: var(--kui-text);
+    }
+  }
+
+  &__demo {
+    padding: 20px;
+    border-top: 1px solid var(--kui-surface-2);
+    border-bottom: 1px solid var(--kui-surface-2);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    align-items: center;
+    min-height: 80px;
+    background: var(--kui-bg);
+  }
+
+  // smooth accordion for props table
+  &__props-drawer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.28s ease;
+
+    &.is-open {
+      max-height: 900px;
+    }
+  }
+}
+
+// ─── PropsTable ──────────────────────────────────────────────────────────────
+
+.docs-props {
+  overflow-x: auto;
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12px;
+  }
+
+  th {
+    text-align: left;
+    padding: 8px 12px;
+    background: var(--kui-surface-2);
+    color: var(--kui-text-muted);
+    font-weight: 700;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    white-space: nowrap;
+  }
+
+  tr:nth-child(even) td { background: color-mix(in srgb, var(--kui-surface-2) 40%, transparent); }
+
+  td {
+    padding: 8px 12px;
+    border-bottom: 1px solid var(--kui-surface-2);
+    color: var(--kui-text);
+    vertical-align: top;
+    line-height: 1.5;
+  }
+
+  code {
+    font-family: 'SF Mono', 'Fira Code', monospace;
+    font-size: 11px;
+    background: color-mix(in srgb, var(--kui-primary) 10%, transparent);
+    padding: 2px 5px;
+    border-radius: 4px;
+    color: var(--kui-primary);
+    white-space: nowrap;
+  }
+}
+
+// ─── CodeSnippet ─────────────────────────────────────────────────────────────
+
+.docs-snippet {
+  position: relative;
+  background: #1e1e2e;
+
+  &__copy {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 4px 10px;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 6px;
+    color: #a6adc8;
+    cursor: pointer;
+    font-family: var(--kui-font-sans);
+    letter-spacing: 0.03em;
+    transition: background 0.15s, color 0.15s;
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.16);
+      color: #cdd6f4;
+    }
+  }
+
+  pre {
+    margin: 0;
+    padding: 16px 20px;
+    overflow-x: auto;
+    padding-right: 72px;
+  }
+
+  code {
+    font-family: 'SF Mono', 'Fira Code', monospace;
+    font-size: 12px;
+    line-height: 1.65;
+    color: #cdd6f4;
+    white-space: pre;
+  }
+}
+
+// ─── Responsive ──────────────────────────────────────────────────────────────
+
+@media (max-width: 768px) {
+  .docs-topbar {
+    padding: 0 16px;
+    height: 52px;
+
+    &__nav { display: none; }
+  }
+
+  .docs-zone  { padding: 48px 16px 56px; }
+  .docs-hero  { padding: 56px 16px 48px; }
+}
+
+@media (max-width: 480px) {
+  .docs-hero__zones { gap: 10px; }
+  .docs-hero__zone-link { padding: 14px 16px; }
+}

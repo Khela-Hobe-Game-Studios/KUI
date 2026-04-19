@@ -1,0 +1,33 @@
+@keyframes countdown-pop {
+  0%   { opacity: 0; transform: scale(0.4); }
+  40%  { opacity: 1; transform: scale(1.12); }
+  65%  { transform: scale(0.97); }
+  80%  { opacity: 1; transform: scale(1); }
+  100% { opacity: 0; transform: scale(1.4); }
+}
+
+.kui-countdown {
+  position: fixed;
+  inset: 0;
+  z-index: 998;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(10, 10, 20, 0.75);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  pointer-events: none;
+
+  &__number {
+    display: block;
+    font-family: var(--kui-font-display);
+    font-size: clamp(6rem, 20vw, 11rem);
+    font-weight: 900;
+    color: #fff;
+    line-height: 1;
+    text-shadow: 0 0 48px rgba(255,255,255,0.35), 4px 4px 0 rgba(0,0,0,0.4);
+    animation: countdown-pop 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+    will-change: transform, opacity;
+    user-select: none;
+  }
+}

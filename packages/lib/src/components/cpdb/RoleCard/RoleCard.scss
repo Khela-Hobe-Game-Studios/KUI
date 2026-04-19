@@ -1,0 +1,101 @@
+.kui-rolecard {
+  width: 160px;
+  height: 220px;
+  perspective: 900px;
+  cursor: pointer;
+
+  &__inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    transition: transform 0.55s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+
+  &--revealed &__inner {
+    transform: rotateY(180deg);
+  }
+
+  &__front,
+  &__back {
+    position: absolute;
+    inset: 0;
+    border-radius: 16px;
+    border: 2px solid var(--kui-border);
+    box-shadow: var(--kui-shadow-md);
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+  }
+
+  &__front {
+    background: var(--kui-surface);
+    background-image: repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 8px,
+      color-mix(in srgb, var(--kui-border) 15%, transparent) 8px,
+      color-mix(in srgb, var(--kui-border) 15%, transparent) 16px
+    );
+  }
+
+  &__mystery {
+    font-family: var(--kui-font-display);
+    font-size: 64px;
+    font-weight: 900;
+    color: var(--kui-primary);
+    line-height: 1;
+  }
+
+  &__label {
+    font-size: var(--kui-text-sm);
+    font-weight: 600;
+    color: var(--kui-text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  &__back {
+    transform: rotateY(180deg);
+    flex-direction: column;
+    gap: 10px;
+
+    &--chor   { background: #fff5f5; border-color: #e53e3e; }
+    &--police { background: #ebf8ff; border-color: #3182ce; }
+    &--daktar { background: #f0fff4; border-color: #38a169; }
+    &--babu   { background: #f7fafc; border-color: #718096; }
+
+    [data-kui-mode="dark"] &--chor   { background: #2d1010; border-color: #e53e3e; }
+    [data-kui-mode="dark"] &--police { background: #0d1a2d; border-color: #3182ce; }
+    [data-kui-mode="dark"] &--daktar { background: #0d1a12; border-color: #38a169; }
+    [data-kui-mode="dark"] &--babu   { background: #1a1a1a; border-color: #718096; }
+  }
+
+  &__emoji {
+    font-size: 48px;
+    line-height: 1;
+  }
+
+  &__role-name {
+    font-family: var(--kui-font-display);
+    font-size: var(--kui-text-xl);
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+
+    .kui-rolecard__back--chor   & { color: #e53e3e; }
+    .kui-rolecard__back--police & { color: #3182ce; }
+    .kui-rolecard__back--daktar & { color: #38a169; }
+    .kui-rolecard__back--babu   & { color: #718096; }
+  }
+
+  &__player {
+    font-size: var(--kui-text-sm);
+    font-weight: 600;
+    color: var(--kui-text-muted);
+  }
+}

@@ -1,0 +1,1 @@
+export { VoteTally } from './VoteTally'

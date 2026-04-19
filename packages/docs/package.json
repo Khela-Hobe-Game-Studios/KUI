@@ -1,0 +1,22 @@
+{
+  "name": "@khelahobe/kui-docs",
+  "private": true,
+  "version": "0.0.0",
+  "scripts": {
+    "dev":   "vite",
+    "build": "vite build"
+  },
+  "dependencies": {
+    "@khelahobe/kui": "workspace:*"
+  },
+  "devDependencies": {
+    "@types/react":        "^19.0.0",
+    "@types/react-dom":    "^19.0.0",
+    "@vitejs/plugin-react": "^4.3.0",
+    "react":               "^19.0.0",
+    "react-dom":           "^19.0.0",
+    "typescript":          "^5.5.0",
+    "vite":                "^7.0.0",
+    "sass":                "^1.77.0"
+  }
+}

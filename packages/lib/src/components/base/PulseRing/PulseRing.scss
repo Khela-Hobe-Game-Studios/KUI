@@ -1,0 +1,25 @@
+@keyframes pulse-ring {
+  0%   { transform: scale(1);   opacity: 0.85; }
+  100% { transform: scale(2.1); opacity: 0; }
+}
+
+.kui-pulsering {
+  position: relative;
+  display: inline-block;
+
+  &--active::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    border: 3px solid var(--kui-pulse-color, var(--kui-primary));
+    animation: pulse-ring 1.5s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  > * {
+    position: relative;
+    z-index: 1;
+  }
+}

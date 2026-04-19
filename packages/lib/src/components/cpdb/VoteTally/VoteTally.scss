@@ -1,0 +1,58 @@
+.kui-votetally {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  &__row {
+    display: grid;
+    grid-template-columns: 28px 1fr auto auto;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 12px;
+    background: var(--kui-surface);
+    border: 2px solid var(--kui-border);
+    border-radius: var(--kui-radius-md);
+    box-shadow: var(--kui-shadow-sm);
+    transition: border-color 0.2s, box-shadow 0.2s;
+
+    &--leading {
+      border-color: var(--kui-tertiary);
+      box-shadow: var(--kui-shadow-md);
+    }
+  }
+
+  &__name {
+    font-size: var(--kui-text-sm);
+    font-weight: 600;
+    color: var(--kui-text);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  &__bar-track {
+    height: 8px;
+    background: var(--kui-surface-2);
+    border-radius: var(--kui-radius-full);
+    overflow: hidden;
+  }
+
+  &__bar-fill {
+    height: 100%;
+    background: var(--kui-primary);
+    border-radius: var(--kui-radius-full);
+    transition: width 0.4s var(--kui-easing-bounce);
+
+    .kui-votetally__row--leading & {
+      background: var(--kui-tertiary);
+    }
+  }
+
+  &__count {
+    font-size: var(--kui-text-sm);
+    font-weight: 700;
+    color: var(--kui-text-muted);
+    min-width: 20px;
+    text-align: right;
+  }
+}

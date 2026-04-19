@@ -2,6 +2,23 @@
 
 export type KuiTheme     = 'default' | 'chor' | 'police' | 'daktar'
 export type KuiColorMode = 'light' | 'dark'
+export type CpdbRole     = 'chor' | 'police' | 'daktar' | 'babu'
+export type CpdbPhase    = 'lobby' | 'night' | 'day' | 'voting' | 'results'
+
+export interface VoteTallyEntry {
+  playerId:   string
+  name:       string
+  initial:    string
+  votes:      number
+  isLeading?: boolean
+}
+
+export interface ToastItem {
+  id:      string
+  message: string
+  type?:   'info' | 'success' | 'danger'
+  emoji?:  string
+}
 
 // CPDB
 export interface CpdbPlayer {

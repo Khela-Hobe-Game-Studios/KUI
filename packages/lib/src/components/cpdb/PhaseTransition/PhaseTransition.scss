@@ -1,0 +1,57 @@
+@keyframes phase-pulse {
+  0%, 100% { transform: scale(1); }
+  50%       { transform: scale(1.07); }
+}
+
+.kui-phasetrans {
+  position: fixed;
+  inset: 0;
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+
+  &--visible {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  &--night   { background: rgba(5, 10, 38, 0.90); }
+  &--day     { background: rgba(255, 220, 80, 0.88); }
+  &--voting  { background: rgba(55, 0, 100, 0.88); }
+  &--results { background: rgba(20, 20, 40, 0.85); }
+  &--lobby   { background: rgba(20, 30, 60, 0.82); }
+
+  &__inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 18px;
+    user-select: none;
+  }
+
+  &__emoji {
+    font-size: clamp(4rem, 14vw, 8rem);
+    line-height: 1;
+    filter: drop-shadow(0 4px 20px rgba(0,0,0,0.5));
+    animation: phase-pulse 1.8s ease-in-out infinite;
+  }
+
+  &__label {
+    font-family: var(--kui-font-display);
+    font-size: clamp(1.8rem, 6vw, 3.2rem);
+    font-weight: 900;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: #fff;
+    text-shadow: 3px 3px 0 rgba(0,0,0,0.4);
+  }
+
+  &--day &__label {
+    color: #2c1a0e;
+    text-shadow: 2px 2px 0 rgba(255,255,255,0.4);
+  }
+}

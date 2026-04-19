@@ -18,5 +18,11 @@ export { SettingsPanel }  from './components/base/SettingsPanel'
 export { TitleBlock }     from './components/base/TitleBlock'
 export { PageBackground } from './components/base/PageBackground'
 
+// Fun / utility components
+export { ConfettiBurst }    from './components/base/ConfettiBurst'
+export { CountdownSplash }  from './components/base/CountdownSplash'
+export { ToastStack }       from './components/base/ToastStack'
+export { PulseRing }        from './components/base/PulseRing'
+
 // Types
-export type { KuiTheme, KuiColorMode, LeaderboardEntry, CpdbPlayer, CpdbInvestigation, CpdbRoleConfig, FpCategory } from './types'
+export type { KuiTheme, KuiColorMode, LeaderboardEntry, CpdbPlayer, CpdbInvestigation, CpdbRoleConfig, FpCategory, CpdbRole, CpdbPhase, VoteTallyEntry, ToastItem } from './types'

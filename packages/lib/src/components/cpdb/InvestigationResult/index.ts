@@ -1,0 +1,1 @@
+export { InvestigationResult } from './InvestigationResult'
