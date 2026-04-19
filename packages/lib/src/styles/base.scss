@@ -1,0 +1,12 @@
+@use 'tokens';
+
+.kui-root {
+  box-sizing: border-box;
+  font-family: var(--kui-font-sans);
+  color: var(--kui-text);
+  background: var(--kui-bg);
+
+  *, *::before, *::after {
+    box-sizing: inherit;
+  }
+}

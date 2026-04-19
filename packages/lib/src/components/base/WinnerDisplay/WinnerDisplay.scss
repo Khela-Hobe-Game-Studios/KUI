@@ -1,0 +1,45 @@
+@use '../../../styles/tokens';
+
+.kui-winner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--kui-space-3);
+  padding: var(--kui-space-5);
+  border: 3px solid #fbbf24;
+  border-radius: var(--kui-radius-xl);
+  background: var(--kui-surface);
+  box-shadow: 0 0 0 2px #fbbf2440, var(--kui-shadow-lg);
+
+  &--animated { animation: kui-winner-glow 1.8s ease-out infinite; }
+
+  &__label {
+    font-size: var(--kui-text-xs);
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #fbbf24;
+    font-family: var(--kui-font-display);
+  }
+
+  &__entry {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--kui-space-2);
+  }
+
+  &__name {
+    font-family: var(--kui-font-display);
+    font-weight: 900;
+    font-size: var(--kui-text-xl);
+    color: var(--kui-text);
+  }
+
+  &__score {
+    font-family: var(--kui-font-display);
+    font-weight: 800;
+    font-size: var(--kui-text-md);
+    color: #fbbf24;
+  }
+}

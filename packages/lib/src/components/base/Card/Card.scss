@@ -1,0 +1,32 @@
+@use '../../../styles/tokens';
+
+.kui-card {
+  border-radius: var(--kui-radius-lg);
+  border: 4px solid var(--kui-border);
+  background: var(--kui-surface);
+  position: relative;
+
+  &--default  { box-shadow: var(--kui-shadow-md); }
+  &--secondary { border-color: var(--kui-secondary); box-shadow: var(--kui-shadow-md); }
+  &--ghost    { border-color: transparent; box-shadow: none; background: transparent; }
+
+  &__header {
+    padding: var(--kui-space-4) var(--kui-space-5);
+    border-bottom: 3px solid var(--kui-border);
+    font-family: var(--kui-font-display);
+    font-weight: 800;
+    font-size: var(--kui-text-md);
+    color: var(--kui-primary);
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+  }
+
+  &__body {
+    padding: var(--kui-space-5);
+  }
+
+  &__footer {
+    padding: var(--kui-space-4) var(--kui-space-5);
+    border-top: 3px solid var(--kui-border);
+  }
+}

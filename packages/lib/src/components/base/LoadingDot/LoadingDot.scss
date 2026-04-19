@@ -1,0 +1,30 @@
+@use '../../../styles/tokens';
+
+.kui-loadingdot {
+  display: flex;
+  align-items: center;
+  gap: var(--kui-space-2);
+  font-family: var(--kui-font-sans);
+
+  &__dot {
+    width: 8px;
+    height: 8px;
+    border-radius: var(--kui-radius-full);
+    background: #4ade80;
+    flex-shrink: 0;
+    animation: kui-pulse 1.5s ease-in-out infinite;
+  }
+
+  &__message {
+    font-size: var(--kui-text-base);
+    font-weight: 600;
+    color: var(--kui-text-muted);
+  }
+
+  &__subtext {
+    font-size: var(--kui-text-sm);
+    color: var(--kui-text-muted);
+    opacity: 0.7;
+    font-family: var(--kui-font-bengali);
+  }
+}

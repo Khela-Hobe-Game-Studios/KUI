@@ -1,0 +1,25 @@
+@use '../../../styles/tokens';
+
+.kui-avatar {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--kui-radius-full);
+  background: var(--kui-primary);
+  color: var(--kui-bg);
+  font-family: var(--kui-font-display);
+  font-weight: 800;
+  flex-shrink: 0;
+  border: 2px solid var(--kui-border);
+
+  &--sm  { width: 26px; height: 26px; font-size: var(--kui-text-sm); }
+  &--md  { width: 34px; height: 34px; font-size: var(--kui-text-base); }
+  &--lg  { width: 48px; height: 48px; font-size: var(--kui-text-lg); }
+  &--xl  { width: 64px; height: 64px; font-size: var(--kui-text-2xl); }
+
+  &--winner {
+    background: linear-gradient(135deg, #fbbf24, #f59e0b);
+    border-color: #fbbf24;
+    animation: kui-winner-glow 1.8s ease-out infinite;
+  }
+}

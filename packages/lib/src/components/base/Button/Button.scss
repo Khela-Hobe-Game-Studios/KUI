@@ -1,0 +1,111 @@
+@use '../../../styles/tokens';
+
+.kui-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--kui-space-2);
+  font-family: var(--kui-font-display);
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+  cursor: pointer;
+  border: 3px solid var(--kui-border);
+  border-radius: var(--kui-radius-md);
+  transition:
+    transform var(--kui-duration-fast) var(--kui-easing),
+    box-shadow var(--kui-duration-fast) var(--kui-easing);
+
+  &:focus-visible {
+    outline: 3px solid var(--kui-primary);
+    outline-offset: 2px;
+  }
+
+  &:disabled,
+  &[aria-disabled="true"] {
+    opacity: 0.55;
+    cursor: not-allowed;
+    box-shadow: none;
+    transform: none;
+    pointer-events: none;
+  }
+
+  // ── Variants ─────────────────────────────
+  &--primary {
+    background: var(--kui-secondary);
+    color: var(--kui-text);
+    box-shadow: var(--kui-shadow-sm);
+
+    &:hover:not(:disabled):not([aria-disabled="true"]) {
+      transform: translate(2px, 2px);
+      box-shadow: var(--kui-shadow-pressed);
+    }
+
+    &:active:not(:disabled):not([aria-disabled="true"]) {
+      transform: translate(3px, 3px);
+      box-shadow: none;
+    }
+  }
+
+  &--secondary {
+    background: var(--kui-surface);
+    color: var(--kui-text);
+    box-shadow: var(--kui-shadow-sm);
+
+    &:hover:not(:disabled):not([aria-disabled="true"]) {
+      transform: translate(2px, 2px);
+      box-shadow: var(--kui-shadow-pressed);
+    }
+
+    &:active:not(:disabled):not([aria-disabled="true"]) {
+      transform: translate(3px, 3px);
+      box-shadow: none;
+    }
+  }
+
+  &--ghost {
+    background: transparent;
+    color: var(--kui-text);
+    border-color: transparent;
+    box-shadow: none;
+
+    &:hover:not(:disabled):not([aria-disabled="true"]) {
+      background: var(--kui-surface-2);
+      border-color: var(--kui-border);
+    }
+  }
+
+  // ── Sizes ────────────────────────────────
+  &--sm {
+    font-size: var(--kui-text-sm);
+    padding: 8px 14px;
+    border-radius: var(--kui-radius-sm);
+  }
+
+  &--md {
+    font-size: var(--kui-text-base);
+    padding: 12px 18px;
+  }
+
+  &--lg {
+    font-size: var(--kui-text-md);
+    padding: 14px 24px;
+    border-radius: var(--kui-radius-lg);
+  }
+
+  // ── Loading ──────────────────────────────
+  &--loading {
+    cursor: wait;
+    pointer-events: none;
+  }
+
+  &__spinner {
+    width: 14px;
+    height: 14px;
+    border: 2px solid currentColor;
+    border-top-color: transparent;
+    border-radius: var(--kui-radius-full);
+    animation: kui-spin 0.7s linear infinite;
+    flex-shrink: 0;
+  }
+}

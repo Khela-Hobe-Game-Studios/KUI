@@ -1,0 +1,59 @@
+@use '../../../styles/tokens';
+
+.kui-playercard {
+  display: flex;
+  align-items: center;
+  gap: var(--kui-space-2);
+  padding: var(--kui-space-2) var(--kui-space-3);
+  border-radius: var(--kui-radius-md);
+  border: 2px solid var(--kui-border);
+  background: var(--kui-surface);
+  box-shadow: var(--kui-shadow-sm);
+  font-family: var(--kui-font-sans);
+  font-weight: 600;
+  font-size: var(--kui-text-base);
+  color: var(--kui-text);
+
+  &--me {
+    border-color: var(--kui-primary);
+    background: var(--kui-surface-2);
+    box-shadow: var(--kui-shadow-sm);
+  }
+
+  &--eliminated {
+    opacity: 0.45;
+    text-decoration: line-through;
+    border-color: #a0aec0;
+    box-shadow: none;
+    background: var(--kui-surface-2);
+  }
+
+  &--answered { border-color: #38a169; }
+
+  &__name { flex: 1; }
+
+  &__you {
+    font-size: var(--kui-text-xs);
+    font-weight: 700;
+    color: var(--kui-primary);
+    background: var(--kui-surface-2);
+    padding: 2px 8px;
+    border-radius: var(--kui-radius-full);
+    border: 1px solid var(--kui-border);
+  }
+
+  &__check {
+    font-size: var(--kui-text-md);
+    color: #38a169;
+    font-weight: 700;
+  }
+
+  &--grid {
+    flex-direction: column;
+    text-align: center;
+    padding: var(--kui-space-3);
+    min-width: 100px;
+
+    .kui-playercard__name { text-align: center; }
+  }
+}

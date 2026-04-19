@@ -1,0 +1,24 @@
+@use '../../../styles/tokens';
+
+.kui-timer {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--kui-radius-full);
+  border: 3px solid var(--kui-border);
+  font-family: var(--kui-font-display);
+  font-weight: 900;
+  color: var(--kui-text);
+  background: var(--kui-surface);
+  box-shadow: var(--kui-shadow-sm);
+
+  &--sm  { width: 40px; height: 40px; font-size: var(--kui-text-md); }
+  &--md  { width: 56px; height: 56px; font-size: var(--kui-text-xl); }
+  &--lg  { width: 72px; height: 72px; font-size: var(--kui-text-2xl); }
+
+  &--urgent {
+    border-color: var(--kui-tertiary);
+    color: var(--kui-tertiary);
+    animation: kui-pulse 0.8s ease-in-out infinite;
+  }
+}

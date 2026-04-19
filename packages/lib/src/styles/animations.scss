@@ -1,0 +1,25 @@
+@keyframes kui-pulse {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50%       { transform: scale(1.06); opacity: 0.85; }
+}
+
+@keyframes kui-winner-glow {
+  0%   { box-shadow: 0 0 var(--kui-accent); }
+  70%  { box-shadow: 0 0 0 16px transparent; }
+  100% { box-shadow: 0 0 transparent; }
+}
+
+@keyframes kui-spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes kui-bounce-in {
+  0%   { transform: scale(0.8); opacity: 0; }
+  70%  { transform: scale(1.05); }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes kui-fade-in {
+  from { opacity: 0; transform: translateY(4px); }
+  to   { opacity: 1; transform: translateY(0); }
+}

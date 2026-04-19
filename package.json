@@ -1,0 +1,10 @@
+{
+  "name": "@khelahobe/kui-workspace",
+  "private": true,
+  "version": "0.0.0",
+  "scripts": {
+    "build": "pnpm --filter @khelahobe/kui build",
+    "dev":   "pnpm --filter @khelahobe/kui dev",
+    "docs":  "pnpm --filter @khelahobe/kui-docs dev"
+  }
+}

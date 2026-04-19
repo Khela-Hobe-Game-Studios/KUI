@@ -1,0 +1,1 @@
+export { KuiProvider } from './ThemeProvider'

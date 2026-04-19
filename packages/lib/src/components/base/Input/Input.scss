@@ -1,0 +1,55 @@
+@use '../../../styles/tokens';
+
+.kui-input-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: var(--kui-space-1);
+}
+
+.kui-input-label {
+  font-family: var(--kui-font-sans);
+  font-size: var(--kui-text-sm);
+  font-weight: 600;
+  color: var(--kui-text);
+}
+
+.kui-input {
+  padding: 12px 16px;
+  border: 3px solid var(--kui-border);
+  border-radius: var(--kui-radius-md);
+  font-size: var(--kui-text-base);
+  font-weight: 600;
+  font-family: var(--kui-font-sans);
+  background: var(--kui-bg);
+  color: var(--kui-text);
+  box-shadow: var(--kui-shadow-sm);
+  transition:
+    box-shadow var(--kui-duration-fast) var(--kui-easing),
+    transform var(--kui-duration-fast) var(--kui-easing);
+
+  &::placeholder { color: var(--kui-text-muted); font-weight: 500; }
+
+  &:focus {
+    outline: none;
+    box-shadow: var(--kui-shadow-pressed);
+    transform: translate(2px, 2px);
+  }
+
+  &:disabled {
+    opacity: 0.55;
+    cursor: not-allowed;
+    box-shadow: none;
+  }
+
+  &--error {
+    border-color: var(--kui-tertiary);
+    box-shadow: 3px 3px 0 var(--kui-tertiary);
+  }
+}
+
+.kui-input-error {
+  font-size: var(--kui-text-xs);
+  font-weight: 600;
+  color: var(--kui-tertiary);
+  font-family: var(--kui-font-sans);
+}

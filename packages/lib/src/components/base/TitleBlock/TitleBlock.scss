@@ -1,0 +1,52 @@
+@use '../../../styles/tokens';
+
+.kui-titleblock {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--kui-space-2);
+  text-align: center;
+  position: relative;
+
+  &__watermark {
+    position: absolute;
+    font-size: 8rem;
+    font-weight: 900;
+    color: var(--kui-text);
+    opacity: 0.04;
+    pointer-events: none;
+    user-select: none;
+    font-family: var(--kui-font-display);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    white-space: nowrap;
+  }
+
+  &__title {
+    font-family: var(--kui-font-display);
+    font-size: var(--kui-text-hero);
+    font-weight: 900;
+    color: var(--kui-primary);
+    margin: 0;
+    line-height: 1.1;
+    position: relative;
+  }
+
+  &__subtitle {
+    font-family: var(--kui-font-display);
+    font-size: var(--kui-text-sm);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.25em;
+    color: var(--kui-text-muted);
+    margin: 0;
+  }
+
+  &__tagline {
+    font-size: var(--kui-text-base);
+    color: var(--kui-text-muted);
+    margin: 0;
+    font-family: var(--kui-font-sans);
+  }
+}

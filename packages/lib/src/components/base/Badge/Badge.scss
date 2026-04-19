@@ -1,0 +1,66 @@
+@use '../../../styles/tokens';
+
+.kui-badge {
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--kui-font-display);
+  font-weight: 700;
+  font-size: var(--kui-text-sm);
+  padding: 4px 12px;
+  border-radius: var(--kui-radius-full);
+  border: 2px solid transparent;
+  white-space: nowrap;
+  letter-spacing: 0.03em;
+
+  &--default {
+    background: var(--kui-surface-2);
+    color: var(--kui-text);
+    border-color: var(--kui-border);
+    box-shadow: var(--kui-shadow-sm);
+  }
+
+  &--night {
+    background: #2d3748;
+    color: #e2e8f0;
+    border-color: #1a202c;
+    box-shadow: 2px 2px 0 #1a202c;
+  }
+
+  &--day {
+    background: #f6e05e;
+    color: #2d3748;
+    border-color: #b7791f;
+    box-shadow: 2px 2px 0 #b7791f;
+  }
+
+  &--voting {
+    background: var(--kui-primary);
+    color: var(--kui-bg);
+    border-color: var(--kui-shadow-color);
+    box-shadow: var(--kui-shadow-sm);
+  }
+
+  &--lobby {
+    background: var(--kui-surface-2);
+    color: var(--kui-text-muted);
+    border-color: var(--kui-border);
+  }
+
+  &--success {
+    background: #c6f6d5;
+    color: #276749;
+    border-color: #38a169;
+    box-shadow: 2px 2px 0 #276749;
+  }
+
+  &--danger {
+    background: #fed7d7;
+    color: #c53030;
+    border-color: #e53e3e;
+    box-shadow: 2px 2px 0 #c53030;
+  }
+
+  &--pulse {
+    animation: kui-pulse 1.5s ease-in-out infinite;
+  }
+}

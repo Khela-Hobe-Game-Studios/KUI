@@ -1,0 +1,106 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@400;500;600;700;800;900&family=Hind+Siliguri:wght@400;600;700&display=swap');
+
+// ─── Light mode (default) ─────────────────────────────────────────────────────
+[data-kui-theme] {
+  // Colors
+  --kui-bg:           #f8f9ff;
+  --kui-surface:      #ffffff;
+  --kui-surface-2:    #f0f1ff;
+  --kui-text:         #4a5568;
+  --kui-text-muted:   #718096;
+  --kui-border:       #6b73ff;
+  --kui-primary:      #6b73ff;
+  --kui-secondary:    #ff9a9e;
+  --kui-tertiary:     #ff6b6b;
+  --kui-shadow-color: #3b42cc;
+  --kui-accent:       #6b73ff;
+
+  // Shadows (cartoon solid)
+  --kui-shadow-sm:      3px 3px 0 var(--kui-shadow-color);
+  --kui-shadow-md:      4px 4px 0 var(--kui-shadow-color);
+  --kui-shadow-lg:      6px 6px 0 var(--kui-shadow-color);
+  --kui-shadow-pressed: 1px 1px 0 var(--kui-shadow-color);
+
+  // Spacing
+  --kui-space-1:  4px;
+  --kui-space-2:  8px;
+  --kui-space-3:  12px;
+  --kui-space-4:  16px;
+  --kui-space-5:  20px;
+  --kui-space-6:  24px;
+  --kui-space-8:  32px;
+  --kui-space-10: 40px;
+
+  // Border radius
+  --kui-radius-sm:   8px;
+  --kui-radius-md:   12px;
+  --kui-radius-lg:   16px;
+  --kui-radius-xl:   20px;
+  --kui-radius-full: 9999px;
+
+  // Typography
+  --kui-font-sans:    'Inter', sans-serif;
+  --kui-font-display: 'Poppins', sans-serif;
+  --kui-font-bengali: 'Hind Siliguri', sans-serif;
+  --kui-text-xs:   10px;
+  --kui-text-sm:   12px;
+  --kui-text-base: 14px;
+  --kui-text-md:   16px;
+  --kui-text-lg:   18px;
+  --kui-text-xl:   20px;
+  --kui-text-2xl:  24px;
+  --kui-text-3xl:  32px;
+  --kui-text-hero: clamp(2.5rem, 5vw, 4.5rem);
+
+  // Animation
+  --kui-duration-fast:   0.1s;
+  --kui-duration-normal: 0.3s;
+  --kui-duration-slow:   0.5s;
+  --kui-easing:          ease;
+  --kui-easing-bounce:   cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  // Z-index
+  --kui-z-dropdown: 100;
+  --kui-z-sticky:   200;
+  --kui-z-overlay:  900;
+  --kui-z-modal:    1000;
+  --kui-z-toast:    1100;
+  --kui-z-tooltip:  1200;
+}
+
+// ─── Dark mode ────────────────────────────────────────────────────────────────
+[data-kui-theme][data-kui-mode="dark"] {
+  --kui-bg:           #0e0f1a;
+  --kui-surface:      #13141f;
+  --kui-surface-2:    #1c1d2e;
+  --kui-text:         #f8f7ff;
+  --kui-text-muted:   #8b8fa8;
+  --kui-border:       #7b84ff;
+  --kui-primary:      #8b94ff;
+  --kui-secondary:    #ff9a9e;
+  --kui-tertiary:     #ff8080;
+  --kui-shadow-color: #1a1b3a;
+  --kui-accent:       #8b94ff;
+}
+
+// ─── Theme overrides ─────────────────────────────────────────────────────────
+[data-kui-theme="chor"] {
+  --kui-primary:      #e53e3e;
+  --kui-border:       #e53e3e;
+  --kui-shadow-color: #9b2c2c;
+  --kui-accent:       #e53e3e;
+}
+
+[data-kui-theme="police"] {
+  --kui-primary:      #3182ce;
+  --kui-border:       #3182ce;
+  --kui-shadow-color: #2b6cb0;
+  --kui-accent:       #3182ce;
+}
+
+[data-kui-theme="daktar"] {
+  --kui-primary:      #38a169;
+  --kui-border:       #38a169;
+  --kui-shadow-color: #276749;
+  --kui-accent:       #38a169;
+}

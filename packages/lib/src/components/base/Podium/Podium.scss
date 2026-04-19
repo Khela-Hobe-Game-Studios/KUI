@@ -1,0 +1,43 @@
+@use '../../../styles/tokens';
+
+.kui-podium {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: var(--kui-space-3);
+
+  &__slot {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--kui-space-1);
+  }
+
+  &__medal  { font-size: 1.4rem; line-height: 1; }
+
+  &__name {
+    font-family: var(--kui-font-display);
+    font-weight: 700;
+    font-size: var(--kui-text-sm);
+    color: var(--kui-text);
+    text-align: center;
+  }
+
+  &__score {
+    font-family: var(--kui-font-display);
+    font-weight: 800;
+    font-size: var(--kui-text-sm);
+    color: var(--kui-primary);
+  }
+
+  &__block {
+    width: 80px;
+    border-radius: 8px 8px 0 0;
+    border: 3px solid var(--kui-border);
+    box-shadow: var(--kui-shadow-sm);
+  }
+
+  &__slot--1 &__block { height: 80px; background: #fbbf24; border-color: #f59e0b; }
+  &__slot--2 &__block { height: 56px; background: var(--kui-surface-2); }
+  &__slot--3 &__block { height: 40px; background: var(--kui-surface-2); }
+}
