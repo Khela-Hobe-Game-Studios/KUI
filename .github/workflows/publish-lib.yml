@@ -1,0 +1,33 @@
+name: Publish @khelahobe/kui
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'packages/lib/**'
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: latest
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: pnpm
+          registry-url: https://registry.npmjs.org
+
+      - run: pnpm install --frozen-lockfile
+
+      - run: pnpm build
+        working-directory: packages/lib
+
+      - run: npm publish --access public
+        working-directory: packages/lib
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_ACCESS_TOKEN }}

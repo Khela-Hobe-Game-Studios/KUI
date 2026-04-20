@@ -22,6 +22,29 @@ SPEC.md   → master interface spec (428 lines, full prop signatures)
 
 ---
 
+## Publishing
+
+The library is published to npm as `@khelahobe/kui` (public, scoped under `@khelahobe` org).
+
+**To release a new version:**
+1. Bump `version` in `packages/lib/package.json`
+2. Push to `main` with changes under `packages/lib/` — the GitHub Action (`.github/workflows/publish-lib.yml`) will build and publish automatically
+
+**Manual publish:**
+```bash
+cd packages/lib && pnpm build
+NPM_TOKEN=$(grep NPM_ACCESS_TOKEN .env | cut -d= -f2)
+npm publish --access public --//registry.npmjs.org/:_authToken=$NPM_TOKEN
+```
+
+**Secrets:**
+- npm token lives in `packages/lib/.env` (gitignored) as `NPM_ACCESS_TOKEN`
+- GitHub Actions uses repo secret `NPM_ACCESS_TOKEN` (set in Settings → Secrets → Actions)
+
+**Gotcha:** npm will reject a publish if the version hasn't changed — always bump `packages/lib/package.json` version before a release push.
+
+---
+
 ## packages/lib — the component library
 
 ### Source layout

@@ -1,6 +1,6 @@
 {
   "name": "@khelahobe/kui",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Khelahobe UI — cartoon-pastel component library for games",
   "type": "module",
   "main":   "./dist/index.cjs",
@@ -25,6 +25,9 @@
     "./styles": "./dist/style.css"
   },
   "files": ["dist"],
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "build": "vite build",
     "dev":   "vite build --watch",
