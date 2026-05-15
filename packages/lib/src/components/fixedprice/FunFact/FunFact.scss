@@ -1,0 +1,29 @@
+@use '../../../styles/tokens';
+
+.kui-funfact {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: var(--kui-space-3) var(--kui-space-4);
+  background: var(--kui-surface-2);
+  border: 2px dashed var(--kui-border);
+  border-radius: var(--kui-radius-md);
+  margin: 0;
+  font-family: var(--kui-font-sans);
+
+  &__label {
+    font-family: var(--kui-font-display);
+    font-weight: 700;
+    font-size: var(--kui-text-xs);
+    color: var(--kui-accent);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  &__text {
+    font-style: italic;
+    font-size: var(--kui-text-base);
+    color: var(--kui-text);
+    line-height: 1.45;
+  }
+}

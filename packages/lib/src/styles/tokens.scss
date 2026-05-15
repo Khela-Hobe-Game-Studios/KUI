@@ -104,3 +104,34 @@
   --kui-shadow-color: #276749;
   --kui-accent:       #38a169;
 }
+
+// ─── FixedPrice theme — BD-flag palette on cartoon-pastel base ────────────────
+[data-kui-theme="fixedprice"] {
+  // Light mode (warm cream desi base)
+  --kui-bg:           #fff8ec;
+  --kui-surface:      #ffffff;
+  --kui-surface-2:    #fff1d6;
+  --kui-text:         #2d3a2e;
+  --kui-text-muted:   #7a6b52;
+  --kui-border:       #006a4e;
+  --kui-primary:      #006a4e;
+  --kui-secondary:    #f42a41;
+  --kui-tertiary:     #fbbf24;
+  --kui-shadow-color: #003d2e;
+  --kui-accent:       #fbbf24;
+}
+
+[data-kui-theme="fixedprice"][data-kui-mode="dark"] {
+  // Dark mode (deep teal desi base)
+  --kui-bg:           #0a1f1a;
+  --kui-surface:      #122e26;
+  --kui-surface-2:    #1a3d33;
+  --kui-text:         #fdf6e3;
+  --kui-text-muted:   #b8a888;
+  --kui-border:       #15a374;
+  --kui-primary:      #15a374;
+  --kui-secondary:    #ff5c6e;
+  --kui-tertiary:     #fcd34d;
+  --kui-shadow-color: #02110d;
+  --kui-accent:       #fcd34d;
+}

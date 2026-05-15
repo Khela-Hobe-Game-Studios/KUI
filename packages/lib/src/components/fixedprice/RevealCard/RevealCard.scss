@@ -1,0 +1,98 @@
+@use '../../../styles/tokens';
+
+.kui-revcard {
+  display: grid;
+  grid-template-columns: auto auto 1fr auto auto auto;
+  align-items: center;
+  gap: var(--kui-space-3);
+  padding: var(--kui-space-3) var(--kui-space-4);
+  background: var(--kui-surface);
+  border: 2.5px solid var(--kui-border);
+  border-radius: var(--kui-radius-md);
+  box-shadow: var(--kui-shadow-sm);
+  font-family: var(--kui-font-sans);
+  color: var(--kui-text);
+
+  &--winner {
+    border-color: #38a169;
+    background: linear-gradient(135deg, color-mix(in srgb, #38a169 12%, var(--kui-surface)), var(--kui-surface));
+    box-shadow: 4px 4px 0 #276749;
+    transform: scale(1.02);
+  }
+
+  &--me {
+    outline: 2px dashed var(--kui-accent);
+    outline-offset: 2px;
+  }
+
+  &__rank {
+    font-family: var(--kui-font-display);
+    font-weight: 800;
+    font-size: var(--kui-text-md);
+    color: var(--kui-text-muted);
+    min-width: 30px;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  &__crown {
+    animation: kui-pulse 1.5s ease-in-out infinite;
+  }
+
+  &__name {
+    font-weight: 700;
+    font-size: var(--kui-text-md);
+    display: inline-flex;
+    align-items: baseline;
+    gap: 8px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  &__you {
+    font-size: var(--kui-text-xs);
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: var(--kui-radius-full);
+    background: var(--kui-accent);
+    color: var(--kui-bg);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+
+  &__guess {
+    font-family: var(--kui-font-display);
+    font-weight: 800;
+    font-size: var(--kui-text-lg);
+    color: var(--kui-accent);
+    em {
+      font-style: normal;
+      font-size: var(--kui-text-xs);
+      color: var(--kui-text-muted);
+      margin-left: 4px;
+      font-weight: 600;
+    }
+  }
+
+  &__distance {
+    font-size: var(--kui-text-sm);
+    color: var(--kui-text-muted);
+    font-weight: 600;
+  }
+
+  &__points {
+    font-family: var(--kui-font-display);
+    font-weight: 800;
+    font-size: var(--kui-text-md);
+    color: #38a169;
+    background: #f0fdf4;
+    border: 2px solid #38a169;
+    border-radius: var(--kui-radius-full);
+    padding: 2px 10px;
+    [data-kui-mode="dark"] & {
+      background: #052e1a; color: #6ee7b7;
+    }
+  }
+}

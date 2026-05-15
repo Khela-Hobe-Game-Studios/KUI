@@ -1,0 +1,33 @@
+@use '../../../styles/tokens';
+
+.kui-catbadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--kui-font-display);
+  font-weight: 700;
+  font-size: var(--kui-text-sm);
+  letter-spacing: 0.04em;
+  padding: 5px 14px;
+  border-radius: var(--kui-radius-full);
+  border: 2px solid var(--kui-cat-color, var(--kui-primary));
+  background: var(--kui-cat-bg, var(--kui-surface-2));
+  color: var(--kui-cat-color, var(--kui-primary));
+  box-shadow: 2px 2px 0 var(--kui-cat-color, var(--kui-primary));
+  text-transform: uppercase;
+  white-space: nowrap;
+
+  &--desh    { --kui-cat-color: #2f855a; --kui-cat-bg: #f0fdf4; }
+  &--cricket { --kui-cat-color: #c05621; --kui-cat-bg: #fff7ed; }
+  &--taka    { --kui-cat-color: #b7791f; --kui-cat-bg: #fffbeb; }
+  &--global  { --kui-cat-color: #4c51bf; --kui-cat-bg: #eef2ff; }
+  &--weird   { --kui-cat-color: #b83280; --kui-cat-bg: #fdf2f8; }
+
+  [data-kui-mode="dark"] & {
+    &.kui-catbadge--desh    { --kui-cat-color: #6ee7b7; --kui-cat-bg: #052e1a; }
+    &.kui-catbadge--cricket { --kui-cat-color: #fdba74; --kui-cat-bg: #3a1f0a; }
+    &.kui-catbadge--taka    { --kui-cat-color: #fcd34d; --kui-cat-bg: #3a2a0a; }
+    &.kui-catbadge--global  { --kui-cat-color: #a5b4fc; --kui-cat-bg: #1c1f3a; }
+    &.kui-catbadge--weird   { --kui-cat-color: #f0abfc; --kui-cat-bg: #3a1233; }
+  }
+}

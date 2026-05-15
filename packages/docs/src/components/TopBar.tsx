@@ -12,6 +12,7 @@ const THEMES: { value: KuiTheme; label: string }[] = [
   { value: 'chor',    label: '🔴 Chor'    },
   { value: 'police',  label: '🔵 Police'  },
   { value: 'daktar',  label: '🟢 Daktar'  },
+  { value: 'fixedprice', label: '🇧🇩 FixedPrice' },
 ]
 
 const ZONES = [
@@ -21,6 +22,7 @@ const ZONES = [
   { id: 'feedback',   label: '🎭 Feedback'   },
   { id: 'layout',     label: '🎪 Layout'     },
   { id: 'cpdb',       label: '🎮 CPDB'       },
+  { id: 'fixedprice', label: '🇧🇩 FixedPrice' },
   { id: 'fun',        label: '🎉 Fun'        },
 ]
 

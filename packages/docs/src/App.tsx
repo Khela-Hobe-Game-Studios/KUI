@@ -9,6 +9,7 @@ import { DataZone } from './sections/DataZone'
 import { FeedbackZone } from './sections/FeedbackZone'
 import { LayoutZone } from './sections/LayoutZone'
 import { CpdbZone }   from './sections/CpdbZone'
+import { FixedPriceZone } from './sections/FixedPriceZone'
 import { FunZone }    from './sections/FunZone'
 import './styles/docs.scss'
 
@@ -32,6 +33,7 @@ export default function App() {
         <FeedbackZone />
         <LayoutZone />
         <CpdbZone />
+        <FixedPriceZone />
         <FunZone />
       </main>
     </KuiProvider>

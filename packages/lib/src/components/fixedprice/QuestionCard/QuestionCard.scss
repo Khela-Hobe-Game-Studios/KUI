@@ -1,0 +1,51 @@
+@use '../../../styles/tokens';
+
+.kui-qcard {
+  background: var(--kui-surface);
+  border: 3px solid var(--kui-border);
+  border-radius: var(--kui-radius-xl);
+  box-shadow: var(--kui-shadow-lg);
+  padding: var(--kui-space-6) var(--kui-space-5);
+  display: flex;
+  flex-direction: column;
+  gap: var(--kui-space-4);
+
+  &__meta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: var(--kui-space-2);
+  }
+
+  &__round {
+    font-family: var(--kui-font-display);
+    font-weight: 700;
+    font-size: var(--kui-text-sm);
+    color: var(--kui-text-muted);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  &__question {
+    font-family: var(--kui-font-display);
+    font-weight: 800;
+    font-size: clamp(1.5rem, 4vw, var(--kui-text-hero));
+    color: var(--kui-text);
+    line-height: 1.15;
+    margin: 0;
+    text-wrap: balance;
+  }
+
+  &__unit {
+    font-family: var(--kui-font-sans);
+    color: var(--kui-text-muted);
+    font-size: var(--kui-text-md);
+    margin: 0;
+
+    strong {
+      color: var(--kui-accent);
+      font-weight: 700;
+    }
+  }
+}

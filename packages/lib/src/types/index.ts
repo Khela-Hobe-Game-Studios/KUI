@@ -1,6 +1,6 @@
 // ─── Shared game types ────────────────────────────────────────────────────────
 
-export type KuiTheme     = 'default' | 'chor' | 'police' | 'daktar'
+export type KuiTheme     = 'default' | 'chor' | 'police' | 'daktar' | 'fixedprice'
 export type KuiColorMode = 'light' | 'dark'
 export type CpdbRole     = 'chor' | 'police' | 'daktar' | 'babu'
 export type CpdbPhase    = 'lobby' | 'night' | 'day' | 'voting' | 'results'

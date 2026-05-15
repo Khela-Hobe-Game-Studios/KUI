@@ -1,0 +1,1 @@
+export { FunFact } from './FunFact'
