@@ -1,0 +1,1 @@
+export { StudioCredit } from './StudioCredit'

@@ -1,0 +1,60 @@
+@use '../../../styles/tokens';
+
+.kui-studiocredit {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  opacity: 0.9;
+  font-family: var(--kui-font-sans);
+
+  &--fixed {
+    position: fixed;
+    left: 50%;
+    bottom: calc(env(safe-area-inset-bottom, 0px) + 20px);
+    transform: translateX(-50%);
+    pointer-events: none;
+    z-index: var(--kui-z-sticky);
+  }
+
+  &__rule {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: min(220px, 70vw);
+  }
+
+  &__line {
+    flex: 1;
+    height: 1px;
+    background: var(--kui-text-muted);
+    opacity: 0.4;
+  }
+
+  &__glyph {
+    color: var(--kui-text-muted);
+    font-size: var(--kui-text-sm);
+    opacity: 0.7;
+    line-height: 1;
+  }
+
+  &__by {
+    font-size: var(--kui-text-xs);
+    font-weight: 700;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--kui-text-muted);
+  }
+
+  &__studio {
+    font-family: var(--kui-font-display);
+    font-size: var(--kui-text-base);
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    color: var(--kui-text);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+}

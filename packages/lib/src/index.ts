@@ -17,6 +17,7 @@ export { LoadingDot }     from './components/base/LoadingDot'
 export { SettingsPanel }  from './components/base/SettingsPanel'
 export { TitleBlock }     from './components/base/TitleBlock'
 export { PageBackground } from './components/base/PageBackground'
+export { StudioCredit }   from './components/base/StudioCredit'
 
 // Fun / utility components
 export { ConfettiBurst }    from './components/base/ConfettiBurst'

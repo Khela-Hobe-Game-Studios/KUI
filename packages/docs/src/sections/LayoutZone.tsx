@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { KuiProvider, SettingsPanel, Button } from '@khelahobe/kui'
+import { KuiProvider, SettingsPanel, Button, StudioCredit } from '@khelahobe/kui'
 import type { KuiTheme, KuiColorMode } from '@khelahobe/kui'
 import { Booth } from '../components/Booth'
 import type { PropRow } from '../components/Booth'
@@ -32,6 +32,14 @@ const kuiProviderProps: PropRow[] = [
   },
 ]
 
+const studioCreditProps: PropRow[] = [
+  { name: 'studio',    type: 'string',  required: true,        description: 'Studio or author name displayed in the credit.' },
+  { name: 'by',        type: 'string',  default: "'A game by'", description: 'Small uppercase prefix shown above the studio name.' },
+  { name: 'glyph',     type: 'ReactNode', default: "'✦'",       description: 'Centered ornament between the two divider lines.' },
+  { name: 'fixed',     type: 'boolean', default: 'false',      description: 'Pin the credit to the bottom-center of the viewport.' },
+  { name: 'className', type: 'string',                         description: 'Optional extra class forwarded to the root element.' },
+]
+
 const settingsPanelProps: PropRow[] = [
   {
     name: 'settings',
@@ -60,6 +68,15 @@ const kuiProviderSnippet = `// Any subtree can have its own independent theme
   <KuiProvider theme="police"><Button>Police</Button> </KuiProvider>
   <KuiProvider theme="daktar"><Button>Daktar</Button> </KuiProvider>
 </div>`
+
+const studioCreditSnippet = `// Inline (sits at the end of a flex column)
+<StudioCredit studio="Khela Hobe Game Studios" />
+
+// Pinned to the viewport bottom (useful on landing pages)
+<StudioCredit studio="Khela Hobe Game Studios" fixed />
+
+// Custom prefix and glyph
+<StudioCredit studio="Made by Karim" by="A game by" glyph="·" />`
 
 const settingsPanelSnippet = `const [settings, setSettings] = useState([
   { key: 'Players', value: '6',     isActive: true  },
@@ -253,6 +270,19 @@ export function LayoutZone() {
           snippet={settingsPanelSnippet}
         >
           <SettingsPanelDemo />
+        </Booth>
+
+        <Booth
+          id="studiocredit"
+          emoji="🎬"
+          title="StudioCredit"
+          description="Refined 'A game by Studio Name' credit with an ornamental rule. Pair with the fixed prop to pin it to the bottom of a landing page."
+          props={studioCreditProps}
+          snippet={studioCreditSnippet}
+        >
+          <div style={{ padding: '12px 0' }}>
+            <StudioCredit studio="Khela Hobe Game Studios" />
+          </div>
         </Booth>
       </div>
     </section>
