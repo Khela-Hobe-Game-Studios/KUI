@@ -6,11 +6,5 @@
     "build": "pnpm --filter @khelahobe/kui build",
     "dev":   "pnpm --filter @khelahobe/kui dev",
     "docs":  "pnpm --filter @khelahobe/kui-docs dev"
-  },
-  "pnpm": {
-    "onlyBuiltDependencies": [
-      "@parcel/watcher",
-      "esbuild"
-    ]
   }
 }

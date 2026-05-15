@@ -29,8 +29,9 @@ The library is published to npm as `@khelahobe/kui` (public, scoped under `@khel
 **To release a new version:**
 1. Bump `version` in `packages/lib/package.json`
 2. Push to `main` with changes under `packages/lib/` — the GitHub Action (`.github/workflows/publish-lib.yml`) will build and publish automatically
+3. Or manually trigger: `gh workflow run "Publish @khelahobe/kui" --repo Khela-Hobe-Game-Studios/KUI` (workflow_dispatch is enabled)
 
-**Manual publish:**
+**Manual publish (local):**
 ```bash
 cd packages/lib && pnpm build
 NPM_TOKEN=$(grep NPM_ACCESS_TOKEN .env | cut -d= -f2)
@@ -41,7 +42,19 @@ npm publish --access public --//registry.npmjs.org/:_authToken=$NPM_TOKEN
 - npm token lives in `packages/lib/.env` (gitignored) as `NPM_ACCESS_TOKEN`
 - GitHub Actions uses repo secret `NPM_ACCESS_TOKEN` (set in Settings → Secrets → Actions)
 
-**Gotcha:** npm will reject a publish if the version hasn't changed — always bump `packages/lib/package.json` version before a release push.
+**Gotchas:**
+- npm will reject a publish if the version hasn't changed — always bump `packages/lib/package.json` version before a release push.
+- Both workflows pin **pnpm to v10** (`pnpm/action-setup@v4` with `version: 10`). Do NOT use `version: latest`. pnpm v11 added a strict-builds gate (`ERR_PNPM_IGNORED_BUILDS`) that rejects `pnpm install --frozen-lockfile` unless every package with an install script (`@parcel/watcher`, `esbuild`) is pre-approved in the lockfile. We don't carry that approval, so v11 breaks CI. Two prior 0.2.0 publish attempts failed for exactly this reason — leaving versions 0.2.0 and 0.2.1 "burnt" (committed, never published); the live npm registry skips from 0.1.1 straight to whatever the next successful publish is.
+- Both workflows use Node 22 (`actions/setup-node@v4` with `node-version: 22`). pnpm v10 still requires Node ≥18; v11 requires Node ≥22 — keep them in sync if you ever consider upgrading pnpm.
+
+## Two CI workflows — don't confuse them
+
+| Workflow | File | Trigger | What it does | Where the result shows up |
+|---|---|---|---|---|
+| **Deploy Docs** | `.github/workflows/deploy-docs.yml` | every push to main | Builds the Vite showcase under `packages/docs/`, deploys to GitHub Pages | The live docs/showcase website |
+| **Publish @khelahobe/kui** | `.github/workflows/publish-lib.yml` | push to main touching `packages/lib/**`, or manual `workflow_dispatch` | Runs `npm publish` on `packages/lib/` | The npm registry — `npm install @khelahobe/kui` |
+
+A successful **Deploy Docs** run only ships the website. It does NOT publish the npm package. If consumers report `npm install @khelahobe/kui` is still pulling an old version, check the **Publish** workflow, not Deploy Docs.
 
 ---
 
