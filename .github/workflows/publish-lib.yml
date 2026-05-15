@@ -28,6 +28,17 @@ jobs:
       - run: pnpm build
         working-directory: packages/lib
 
+      - name: Diagnose npm auth
+        run: |
+          echo "::group::npm whoami"
+          npm whoami || echo "(whoami failed)"
+          echo "::endgroup::"
+          echo "::group::npm config (sanitized)"
+          npm config list | grep -v '_authToken' || true
+          echo "::endgroup::"
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_ACCESS_TOKEN }}
+
       - run: npm publish --access public
         working-directory: packages/lib
         env:
