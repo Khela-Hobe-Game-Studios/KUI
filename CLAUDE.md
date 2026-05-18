@@ -111,7 +111,7 @@ Used in every component: `cn('kui-foo', variant && 'kui-foo--active', className)
 ## Types (src/types/index.ts)
 
 ```ts
-type KuiTheme     = 'default' | 'chor' | 'police' | 'daktar'
+type KuiTheme     = 'default' | 'chor' | 'police' | 'daktar' | 'fixedprice'
 type KuiColorMode = 'light' | 'dark'
 type CpdbRole     = 'chor' | 'police' | 'daktar' | 'babu'
 type CpdbPhase    = 'lobby' | 'night' | 'day' | 'voting' | 'results'
@@ -160,6 +160,10 @@ All vars live on `[data-kui-theme]` (written by KuiProvider).
 [data-kui-theme="chor"]   → primary/border/shadow: #e53e3e / #9b2c2c
 [data-kui-theme="police"] → primary/border/shadow: #3182ce / #2b6cb0
 [data-kui-theme="daktar"] → primary/border/shadow: #38a169 / #276749
+[data-kui-theme="fixedprice"] → BD-flag palette: primary #006A4E (BD green),
+                                secondary #F42A41 (BD red), accent #fbbf24 (gold),
+                                bg #fff8ec (warm cream), shadow #003d2e
+[data-kui-theme="fixedprice"][data-kui-mode="dark"] → primary #15a374, bg #0a1f1a
 ```
 
 ### Shadows (cartoon flat-offset, no blur)
@@ -211,6 +215,7 @@ chor: #e53e3e    police: #3182ce    daktar: #38a169    babu: #718096
 | **TitleBlock** | `title`, `subtitle?`, `tagline?`, `watermark?` | Layered text treatment. |
 | **PageBackground** | `variant?` (default/dark) | Full-page background layer. |
 | **SettingsPanel** | `settings` ({key, value, isActive?}[]) | Key/value row list. |
+| **StudioCredit** | `studio` (required), `by?` ("A game by"), `glyph?` (✦), `fixed?` | "A game by Studio" credit with ornamental horizontal rule. `fixed` pins to viewport bottom-center via position:fixed. |
 | **ConfettiBurst** | `active`, `count?` (default 40) | Returns null when inactive. Parent needs `position: relative`. Seeded pseudo-random pieces (`Math.sin(seed)*10000`). CSS var `--r` per-piece rotation. |
 | **CountdownSplash** | `count`, `visible` | Returns null when not visible. `key={count}` restarts animation on change. Fixed overlay, z-index 998, backdrop-filter blur. |
 | **ToastStack** | `toasts` (ToastItem[]) | Fixed bottom-right, z-index 997. Reversed render (newest on top). Returns null when empty. |
@@ -227,6 +232,18 @@ chor: #e53e3e    police: #3182ce    daktar: #38a169    babu: #718096
 | **InvestigationResult** | `targetName`, `targetInitial`, `isChor`, `animated?` | Uses Avatar. Guilty="CHOR! 🔴" (red), Innocent="Innocent ✅" (green). Scale-in on animated. |
 | **EliminationAnnouncement** | `playerName`, `playerInitial`, `role`, `animated?` | Greyscale Avatar (opacity 0.55, filter grayscale). Role-colored 5px left border. Slide-in from top. |
 
+### FixedPrice components (src/components/fixedprice/)
+
+| Component | Key props | Notes |
+|-----------|-----------|-------|
+| **CategoryBadge** | `category` (FpCategory: desh/cricket/taka/global/weird) | Color-coded pill with per-category bg/border/shadow. |
+| **QuestionCard** | `question`, `unit?`, `category?`, `round?`, `total?` | Large display card with optional meta row. |
+| **AnswerInput** | `unit?`, `accentColor?`, `onSubmit?` | Big numeric input with optional inline unit. `forwardRef`. accentColor flows in as `--kui-answer-accent` CSS var. Enter triggers onSubmit. |
+| **BettingPanel** | `options` (BetOption[]), `selectedBet?`, `onBet` | List of clickable player rows. Selected row uses --kui-secondary. |
+| **RevealCard** | `rank`, `name`, `initial`, `guess`, `distance?`, `points?`, `unit?`, `isWinner?`, `isMe?` | Per-player reveal row. Winner row gets green border + crown. |
+| **FunFact** | `text`, `label?` ("💡 Fun fact") | Italic muted fact line in a dashed-border block. |
+| **MiniLeaderboard** | `players` (LeaderboardEntry[]), `currentPlayerId?`, `maxShow?` (5) | Top-N + pin-self-if-outside-top. |
+
 ---
 
 ## Barrel exports
@@ -235,7 +252,8 @@ chor: #e53e3e    police: #3182ce    daktar: #38a169    babu: #718096
 ```ts
 export { KuiProvider, Badge, Button, Input, Select, Card, Avatar, RoomCode, PlayerCard,
   ProgressBar, Timer, WinnerDisplay, Leaderboard, Podium, LoadingDot, SettingsPanel,
-  TitleBlock, PageBackground, ConfettiBurst, CountdownSplash, ToastStack, PulseRing }
+  TitleBlock, PageBackground, StudioCredit,
+  ConfettiBurst, CountdownSplash, ToastStack, PulseRing }
 export type { KuiTheme, KuiColorMode, LeaderboardEntry, CpdbPlayer, CpdbInvestigation,
   CpdbRoleConfig, FpCategory, CpdbRole, CpdbPhase, VoteTallyEntry, ToastItem }
 ```
@@ -244,6 +262,12 @@ export type { KuiTheme, KuiColorMode, LeaderboardEntry, CpdbPlayer, CpdbInvestig
 ```ts
 export { RoleCard, VoteTally, ActionPrompt, InvestigationResult, PhaseTransition, EliminationAnnouncement }
 export type { CpdbRole, CpdbPhase, VoteTallyEntry }
+```
+
+**src/fixedprice.ts** → `@khelahobe/kui/fixedprice`:
+```ts
+export { CategoryBadge, QuestionCard, AnswerInput, BettingPanel, RevealCard, FunFact, MiniLeaderboard }
+export type { BetOption, FpCategory, LeaderboardEntry }
 ```
 
 ---
