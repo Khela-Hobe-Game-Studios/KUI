@@ -6,9 +6,13 @@
   background: var(--kui-surface);
   position: relative;
 
-  &--default  { box-shadow: var(--kui-shadow-md); }
+  &--default   { box-shadow: var(--kui-shadow-md); }
   &--secondary { border-color: var(--kui-secondary); box-shadow: var(--kui-shadow-md); }
-  &--ghost    { border-color: transparent; box-shadow: none; background: transparent; }
+  &--ghost     { border-color: transparent; box-shadow: none; background: transparent; }
+
+  &--collapsed .kui-card__header {
+    border-bottom-color: transparent;
+  }
 
   &__header {
     padding: var(--kui-space-4) var(--kui-space-5);
@@ -19,6 +23,45 @@
     color: var(--kui-primary);
     letter-spacing: 0.02em;
     text-transform: uppercase;
+
+    &--collapsible {
+      display: flex;
+      align-items: center;
+      gap: var(--kui-space-2);
+    }
+  }
+
+  &__header-content {
+    flex: 1;
+    min-width: 0;
+  }
+
+  &__collapse-btn {
+    flex-shrink: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 3px;
+    color: inherit;
+    opacity: 0.5;
+    border-radius: var(--kui-radius-sm, 4px);
+    transition: opacity 0.15s ease;
+
+    svg {
+      transition: transform 0.2s ease;
+      display: block;
+    }
+
+    &:hover {
+      opacity: 0.85;
+    }
+
+    &--collapsed svg {
+      transform: rotate(-90deg);
+    }
   }
 
   &__body {
